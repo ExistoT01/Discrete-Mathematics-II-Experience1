@@ -436,7 +436,7 @@ int main() {
 			cout << "#==========检查是否有欧拉回路" << endl;
 			cout << endl;
 
-			if (oddNum == 0 || oddNum == 2) {
+			if (oddNum == 0) {
 				cout << "有欧拉回路！" << endl;
 				method.fleury(startIndex);
 			}
