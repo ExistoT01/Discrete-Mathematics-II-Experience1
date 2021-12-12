@@ -51,7 +51,7 @@ public:
 		delete[] node;
 	}
 
-	void display();
+	void display(Node* node);
 
 	void initialList() {
 		cout << endl;
@@ -61,6 +61,7 @@ public:
 		for (int i = 1; i <= n; i++)
 		{
 			cin >> node[i].degree;
+			node[i].id = i;
 		}
 	}
 
@@ -84,7 +85,7 @@ public:
 };
 
 //displaydegree
-void solution::display() {
+void solution::display(Node* node) {
 	for (int i = 1; i <= n; i++)
 	{
 		cout << "degree[" << i << "]" << "= " << node[i].degree << endl;
@@ -231,17 +232,19 @@ bool solution::buildSimpleGraph(Node* node, int n)
 
 	copyList(fakeNode);
 
+	//display(fakeNode);
+
 
 	for (int i = 1; i <= n; i++)
 	{
-		sort(fakeNode + 1 + i, fakeNode + n + 1, cmp);
+		sort(fakeNode + i, fakeNode + n + 1, cmp);
 		if (fakeNode[i].degree > n - i) return false;
 		for (int j = i + 1; j <= i + fakeNode[i].degree; j++)
 		{
 			if (!fakeNode[j].degree) return false;
 			fakeNode[j].degree--;
-			adjMatrix[i][j] = 1;
-			adjMatrix[j][i] = 1;
+			adjMatrix[fakeNode[i].id][fakeNode[j].id] = 1;
+			adjMatrix[fakeNode[j].id][fakeNode[i].id] = 1;
 		}
 		fakeNode[i].degree = 0;
 	}
