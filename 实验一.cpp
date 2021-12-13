@@ -280,7 +280,7 @@ void solution::clearTemLink() {
 void solution::checkConnected(Node* node, int n)
 {
 	cout << endl;
-	cout << "#==========检查图是否联通" << endl;
+	cout << "#==========检查图是否连通" << endl;
 	cout << endl;
 
 	for (int t = 1; t < n; t++)
@@ -340,7 +340,7 @@ void solution::checkConnected(Node* node, int n)
 		for (int j = 1; j <= n && isConnected; j++) {
 			if (i != j) {
 				if (sumLink[i][j] == 0) {
-					cout << endl << "不联通" << endl;
+					cout << endl << "不连通" << endl;
 					isConnected = false;
 				}
 			}
@@ -348,7 +348,7 @@ void solution::checkConnected(Node* node, int n)
 	}
 
 	if (isConnected) {
-		cout << endl << "联通" << endl;
+		cout << endl << "连通" << endl;
 	}
 }
 
@@ -418,10 +418,10 @@ int main() {
 		//如果可简单图化，根据 Havel 定理构造对应简单图
 		if (method.canSimpleGraphRealization)method.buildSimpleGraph(method.node, n);
 		
-		//检查是否联通
+		//检查是否连通
 		method.checkConnected(method.node, n);
 	
-		//联通，求欧拉回路
+		//连通，求欧拉回路
 		int startIndex = 1;
 
 		//method.display();
